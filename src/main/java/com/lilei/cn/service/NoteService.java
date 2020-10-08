@@ -21,6 +21,8 @@ public interface NoteService {
     List<Note> selectByExampleWithBLOBs(NoteExample example);
 
     List<Note> selectByExample(NoteExample example);
+    
+    List<Note> selectAll();
 
     Note selectByPrimaryKey(Integer noteid);
 

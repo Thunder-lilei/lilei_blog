@@ -20,6 +20,15 @@
   <meta name="msapplication-TileColor" content="#0e90d2">
   <link rel="stylesheet" href="assets/css/amazeui.min.css">
   <link rel="stylesheet" href="assets/css/app.css">
+	<!-- //vditor -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.css" />
+	<script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js" defer></script>
+	<!-- 代码高亮 -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/styles/default.min.css">
+	<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<!-- jquery -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 </head>
 
 <body id="blog-article-sidebar">
@@ -38,7 +47,7 @@
 
   <div class="am-collapse am-topbar-collapse" id="blog-collapse">
     <ul class="am-nav am-nav-pills am-topbar-nav">
-      <li class="am-active"><a href="lw-index.html">首页</a></li>
+      <li class="am-active"><a href="index.html">首页</a></li>
       <li class="am-dropdown" data-am-dropdown>
         <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
           首页布局 <span class="am-icon-caret-down"></span>
@@ -61,34 +70,16 @@
 <!-- nav end -->
 <hr>
 <!-- content srart -->
-<div class="am-g am-g-fixed blog-fixed blog-content">
-    <div class="am-u-sm-12">
-    	<form action="note/create" method="post">
-	      <article class="am-article blog-article-p">
-	      		<p class="am-articlse-meta blog-text-center">
-	          		<input id="title" name="title" class="am-article-title blog-text-center" placeholder="标题"/><br>
-	              <input id="introduction" name="introduction" class="am-article-text blog-text-center" type="text" placeholder="简介"/><br>
-	              <input id="time" name="time" class="am-article-text blog-text-center" type="date"/><br>
-								<input id="content" name="content" class="am-article-text blog-text-center" placeholder="内容"/><br>
-						</p>
-	      </article>
-      <input type="submit" value="提交"/>
-    	</form>
-        
-        <div class="am-g blog-article-widget blog-article-margin">
-          <div class="am-u-lg-4 am-u-md-5 am-u-sm-7 am-u-sm-centered blog-text-center">
-            <span class="am-icon-tags"> &nbsp;</span><a href="#">标签</a> , <a href="#">TAG</a> , <a href="#">啦啦</a>
-            <hr>
-          </div>
-        </div>
-
-        <hr>
-        <hr>
-        <ul class="am-pagination blog-article-margin">
-          <li class="am-pagination-prev"><a href="#" class="">&laquo; 一切的回顾</a></li>
-          <li class="am-pagination-next"><a href="#">不远的未来 &raquo;</a></li>
-        </ul>
-        
+<head>
+		<input type="text" id="title" placeholder="title"/>
+		</br>
+		<input type="text" id="introduction" placeholder="introduction"/>
+		</br>
+		<input type="text" id="imagesrc" placeholder="标题图片_src"/>
+		<div id="vditor"></div>
+</head> 
+	<div id="blog"></div>
+		<button onclick="func();">上传</button>
         <hr>
     </div>
 </div>
@@ -97,19 +88,8 @@
   <footer class="blog-footer">
     <div class="blog-text-center">© 2015 AllMobilize, Inc. Licensed under MIT license. Made with love By LWXYFER</div>    
   </footer>
-
-
-
-<!--[if (gte IE 9)|!(IE)]><!-->
 <script src="assets/js/jquery.min.js"></script>
-<!--<![endif]-->
-<!--[if lte IE 8 ]>
-<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
-<![endif]-->
 <script src="assets/js/amazeui.min.js"></script>
 <script src="assets/js/article_create.js"></script>
-<!-- <script src="assets/js/app.js"></script> -->
 </body>
 </html>

@@ -4,48 +4,36 @@ $(document).ready(function() {
 		{alert(message)}
 		
 		let id = GetQueryString("id");
-		getnote(id);
+//		getnote(id);
+		(function(){
+			$.getJSON('/lilei_blog/note/putpage',{id:id},function(data){
+				let message = '';
+				let page = '';
+				$.each(data, function(index,item) {
+					if(index=="message")
+					{message = item}
+					if(index=="page")
+					{page = JSON.stringify(item)}
+				});
+				switch(message)
+				{
+					case "success":
+					break;
+					default :
+					alert(message);
+				}
+				$.each($.parseJSON(page), function(index, item) {
+					if(index==="title"){document.getElementById("article_title").innerHTML = item;}
+					if(index==="image"){document.getElementById("article_image").src = item;}
+					if(index==="author"){document.getElementById("article_author").innerHTML = item;}
+					if(index==="time"){document.getElementById("article_time").innerHTML = formatDate(new Date(item));}
+					if(index==="content"){document.getElementById("article_body").innerHTML = item;}
+				});
+			});
+		})()
 		
 })
 
-function getnote(id)
-{
-	$.getJSON('/lilei_blog/note/getnote',{id:id},function(data){
-			let note = '';
-			let message = '';
-			$.each(data, function(index,item) {
-				if(index=="message")
-				{message = item}
-				if(index=="note")
-				{note = JSON.stringify(item)}
-			});
-			if(message!=="success" && message!=null)
-			{alert(message)}
-			
-//			alert(note)
-			let noteid = "";
-			let title = "";
-			let time = "";
-			let introduction = "";
-			let author = "";
-			let content = "";
-			$.each($.parseJSON(note), function(index, item) {
-				if(index == "noteid")
-				{noteid = item;}
-				if(index == "title")
-				{title = item;}
-				if(index == "time")
-				{time = formatDate(new Date(item));}
-				if(index == "introduction")
-				{introduction = item;}
-				if(index == "author")
-				{author = item;}
-				if(index == "content")
-				{content = item;}
-			});
-			alert(noteid+title+time+introduction+author+content)
-		});
-}
 
 function GetQueryString(name) {
 			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");

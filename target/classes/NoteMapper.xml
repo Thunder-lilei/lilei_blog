@@ -7,10 +7,8 @@
     <result column="time" property="time" jdbcType="TIMESTAMP" />
     <result column="author" property="author" jdbcType="VARCHAR" />
     <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
     <result column="introduction" property="introduction" jdbcType="VARCHAR" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.lilei.cn.entity.Note" extends="BaseResultMap" >
-    <result column="image" property="image" jdbcType="LONGVARBINARY" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,27 +69,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    noteid, title, time, author, content, introduction
+    noteid, title, time, author, content, image, introduction
   </sql>
-  <sql id="Blob_Column_List" >
-    image
-  </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.lilei.cn.entity.NoteExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from note
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lilei.cn.entity.NoteExample" >
     select
     <if test="distinct" >
@@ -106,13 +85,14 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from note
     where noteid = #{noteid,jdbcType=INTEGER}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+    select * from note
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from note
@@ -126,11 +106,11 @@
   </delete>
   <insert id="insert" parameterType="com.lilei.cn.entity.Note" >
     insert into note (noteid, title, time, 
-      author, content, introduction, 
-      image)
+      author, content, image, 
+      introduction)
     values (#{noteid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
-      #{author,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, 
-      #{image,jdbcType=LONGVARBINARY})
+      #{author,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
+      #{introduction,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lilei.cn.entity.Note" >
     insert into note
@@ -150,11 +130,11 @@
       <if test="content != null" >
         content,
       </if>
-      <if test="introduction != null" >
-        introduction,
-      </if>
       <if test="image != null" >
         image,
+      </if>
+      <if test="introduction != null" >
+        introduction,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -173,11 +153,11 @@
       <if test="content != null" >
         #{content,jdbcType=VARCHAR},
       </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
       <if test="introduction != null" >
         #{introduction,jdbcType=VARCHAR},
-      </if>
-      <if test="image != null" >
-        #{image,jdbcType=LONGVARBINARY},
       </if>
     </trim>
   </insert>
@@ -205,26 +185,13 @@
       <if test="record.content != null" >
         content = #{record.content,jdbcType=VARCHAR},
       </if>
+      <if test="record.image != null" >
+        image = #{record.image,jdbcType=VARCHAR},
+      </if>
       <if test="record.introduction != null" >
         introduction = #{record.introduction,jdbcType=VARCHAR},
       </if>
-      <if test="record.image != null" >
-        image = #{record.image,jdbcType=LONGVARBINARY},
-      </if>
     </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update note
-    set noteid = #{record.noteid,jdbcType=INTEGER},
-      title = #{record.title,jdbcType=VARCHAR},
-      time = #{record.time,jdbcType=TIMESTAMP},
-      author = #{record.author,jdbcType=VARCHAR},
-      content = #{record.content,jdbcType=VARCHAR},
-      introduction = #{record.introduction,jdbcType=VARCHAR},
-      image = #{record.image,jdbcType=LONGVARBINARY}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -236,6 +203,7 @@
       time = #{record.time,jdbcType=TIMESTAMP},
       author = #{record.author,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=VARCHAR},
+      image = #{record.image,jdbcType=VARCHAR},
       introduction = #{record.introduction,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -256,23 +224,13 @@
       <if test="content != null" >
         content = #{content,jdbcType=VARCHAR},
       </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
       <if test="introduction != null" >
         introduction = #{introduction,jdbcType=VARCHAR},
       </if>
-      <if test="image != null" >
-        image = #{image,jdbcType=LONGVARBINARY},
-      </if>
     </set>
-    where noteid = #{noteid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.lilei.cn.entity.Note" >
-    update note
-    set title = #{title,jdbcType=VARCHAR},
-      time = #{time,jdbcType=TIMESTAMP},
-      author = #{author,jdbcType=VARCHAR},
-      content = #{content,jdbcType=VARCHAR},
-      introduction = #{introduction,jdbcType=VARCHAR},
-      image = #{image,jdbcType=LONGVARBINARY}
     where noteid = #{noteid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lilei.cn.entity.Note" >
@@ -281,6 +239,7 @@
       time = #{time,jdbcType=TIMESTAMP},
       author = #{author,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
       introduction = #{introduction,jdbcType=VARCHAR}
     where noteid = #{noteid,jdbcType=INTEGER}
   </update>

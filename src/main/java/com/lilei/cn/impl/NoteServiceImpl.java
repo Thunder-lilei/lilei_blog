@@ -98,4 +98,10 @@ public class NoteServiceImpl implements NoteService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public List<Note> selectAll() {
+		// TODO Auto-generated method stub
+		return notemapper.selectAll();
+	}
 }

@@ -13,17 +13,9 @@ public class Note {
 
     private String content;
 
-    private String introduction;
+    private String image;
 
-    private byte[] image;
-    
-    public void setAll(String title,String content,String introduction,Date time) 
-    {
-    	this.title = title == null ? null : title.trim();
-    	this.content = content == null ? null : content.trim();
-    	this.introduction = introduction == null ? null : introduction.trim();
-    	this.time = time;
-    }
+    private String introduction;
 
     public Integer getNoteid() {
         return noteid;
@@ -65,19 +57,19 @@ public class Note {
         this.content = content == null ? null : content.trim();
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image == null ? null : image.trim();
+    }
+
     public String getIntroduction() {
         return introduction;
     }
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction == null ? null : introduction.trim();
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
     }
 }
