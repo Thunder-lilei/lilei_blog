@@ -25,6 +25,8 @@ public interface UserMapper {
     User selectByPrimaryKey(String name);
     
     User selectByAandP(User record);
+    
+    User selectByA(String account);
 
     int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 
@@ -37,4 +39,6 @@ public interface UserMapper {
     int updateByPrimaryKeyWithBLOBs(User record);
 
     int updateByPrimaryKey(User record);
+    
+    int updatePasswordByAccountSelective(User record);
 }

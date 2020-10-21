@@ -116,6 +116,27 @@ public class NoteController extends BaseController{
 			}  
 		return modelMap;
 	}
+	/**
+	 * @功能 查询所有note的title author time
+	 * @参数 无参数
+	 * @返回值 list
+	 */
+	@RequestMapping(value="gettimeline",method = RequestMethod.GET)
+	@ResponseBody
+	private Map<String,Object> gettimeline(){
+		Map<String,Object> modelMap=new HashMap<>();
+		List<Note> list  = noteservice.selecttimelineAll();
+		if(list != null) 
+		{
+			modelMap.put("message", "success");
+			modelMap.put("list", list);
+			return modelMap;
+		}else 
+		{ 
+			modelMap.put("message", "还没有博客！");
+		}  
+		return modelMap;
+	}
 //	/**
 //	 * @功能	获取文章信息 获取作者信息 保存文章
 //	 * @参数	五个参数均为文章属性

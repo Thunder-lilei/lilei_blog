@@ -16,45 +16,9 @@ public class NoteServiceImpl implements NoteService {
 	private NoteMapper notemapper;
 
 	@Override
-	public int countByExample(NoteExample example) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int deleteByExample(NoteExample example) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int deleteByPrimaryKey(String noteid) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int insert(Note record) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public int insertSelective(Note record) {
 		// TODO Auto-generated method stub
 		return notemapper.insertSelective(record);
-	}
-
-	@Override
-	public List<Note> selectByExampleWithBLOBs(NoteExample example) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Note> selectByExample(NoteExample example) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -64,44 +28,14 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	public int updateByExampleSelective(Note record, NoteExample example) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int updateByExampleWithBLOBs(Note record, NoteExample example) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int updateByExample(Note record, NoteExample example) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int updateByPrimaryKeySelective(Note record) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int updateByPrimaryKeyWithBLOBs(Note record) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int updateByPrimaryKey(Note record) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public List<Note> selectAll() {
 		// TODO Auto-generated method stub
 		return notemapper.selectAll();
+	}
+
+	@Override
+	public List<Note> selecttimelineAll() {
+		// TODO Auto-generated method stub
+		return notemapper.selecttimelineAll();
 	}
 }

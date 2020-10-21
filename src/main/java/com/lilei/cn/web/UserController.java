@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.lilei.cn.entity.User;
 import com.lilei.cn.service.UserService;
+import com.lilei.cn.util.IfLoginutil;
 
 
 /**
@@ -49,12 +50,33 @@ public class UserController extends BaseController{
 		{ 
 			mv.addObject("message", "错误的账号或密码！");
 		}
-		try {
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			mv.addObject("success",false);
-			mv.addObject("errMsg",e.toString());
+		return mv;
+	}
+	/**
+	 * @功能	判断登录 修改密码
+	 * @参数	account为账号 newpassword为新密码
+	 * @返回值 跳转login.html和message
+	 */
+	@RequestMapping(value="updateP",method = RequestMethod.POST)
+	@ResponseBody
+	private ModelAndView updateP(@RequestParam String newpassword){
+		if(!IfLoginutil.IfLogin(session)) 
+		{
+			ModelAndView mv = new ModelAndView("redirect:/login.html");
+			mv.addObject("message", "未登录！");
+			return mv;
+		} 
+		ModelAndView mv = new ModelAndView("redirect:/login.html");
+		User user = (User)session.getAttribute("user");
+		user.setPassword(newpassword);
+		Integer result = userservice.updatePasswordByAccountSelective(user);
+		if(result.equals(1)) 
+		{
+			mv.addObject("message", "success");
+			return mv;
+		}else 
+		{
+			mv.addObject("message", "修改失败！");
 		}
 		return mv;
 	}

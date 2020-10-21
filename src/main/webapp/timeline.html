@@ -6,7 +6,7 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>我的博客</title>
+  <title>timeline in article  | Amaze UI Examples</title>
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
   <link rel="icon" type="image/png" href="assets/i/favicon.png">
@@ -20,15 +20,14 @@
   <meta name="msapplication-TileColor" content="#0e90d2">
   <link rel="stylesheet" href="assets/css/amazeui.min.css">
   <link rel="stylesheet" href="assets/css/app.css">
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 </head>
 
 <body id="blog-article-sidebar">
 <!-- header start -->
 <header class="am-g am-g-fixed blog-fixed blog-text-center blog-header">
     <div class="am-u-sm-8 am-u-sm-centered">
-        <img width="200" src="images/logo-big.png" alt="Amaze UI Logo"/>
+        <img width="200" src="http://s.amazeui.org/media/i/brand/amazeui-b.png" alt="Amaze UI Logo"/>
+        <h2 class="am-hide-sm-only">中国首个开源 HTML5 跨屏前端框架</h2>
     </div>
 </header>
 <!-- header end -->
@@ -40,13 +39,22 @@
 
   <div class="am-collapse am-topbar-collapse" id="blog-collapse">
     <ul class="am-nav am-nav-pills am-topbar-nav">
-      <li class="am-active"><a href="index.html">首页</a></li>
+      <li class="am-active"><a href="lw-index.html">首页</a></li>
       <li class="am-dropdown" data-am-dropdown>
-      <li><a href="article.html">标准文章</a></li>
+        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+          首页布局 <span class="am-icon-caret-down"></span>
+        </a>
+        <ul class="am-dropdown-content">
+          <li><a href="lw-index.html">1. blog-index-standard</a></li>         
+          <li><a href="lw-index-nosidebar.html">2. blog-index-nosidebar</a></li>
+          <li><a href="lw-index-center.html">3. blog-index-layout</a></li>
+          <li><a href="lw-index-noslider.html">4. blog-index-noslider</a></li>
+        </ul>
+      </li>
+      <li><a href="lw-article.html">标准文章</a></li>
       <li><a href="lw-img.html">图片库</a></li>
-      <li><a href="article_create.html">写文章</a></li>
+      <li><a href="lw-article-fullwidth.html">全宽页面</a></li>
       <li><a href="lw-timeline.html">存档</a></li>
-      <li><a href="login.html">登录</a></li>
     </ul>
     <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
       <div class="am-form-group">
@@ -59,41 +67,36 @@
 <hr>
 <!-- content srart -->
 <div class="am-g am-g-fixed blog-fixed blog-content">
-    <div class="am-u-md-8 am-u-sm-12">
-      <article class="am-article blog-article-p">
-        <div class="am-article-hd">
-          <h1 id="article_title" class="am-article-title blog-text-center">我的文章哎</h1>
-        </div>        
-        <div class="am-article-bd">
-        <img id="article_image" src="" alt="" class="blog-entry-img blog-article-margin">          
-      	<div id="article_body">
-      		
-      	</div>
-      </article>
-        
-
-        <hr>
-        <div class="am-g blog-author blog-article-margin">
-          <div class="am-u-sm-9 am-u-md-9 am-u-lg-10">
-          <h3><span id="article_author">作者 &nbsp;: &nbsp;</span></h3>
-          <h3><span id="article_time">时间 &nbsp;: &nbsp;</span></h3>
-          </div>
+    <div class="am-u-sm-12">
+        <h1 class="blog-text-center">-- 存档 --</h1>
+        <div id="timeline" class="timeline-year" >
+                <!--<li>
+                    <span class="am-u-sm-4 am-u-md-2 timeline-span">2015/10/18</span>
+                    <span class="am-u-sm-8 am-u-md-6"><a href="#">君埋泉下泥销骨，我寄人间雪满头</a></span>
+                    <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">风又起</span>
+                    <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">amazeui</span>
+                </li>
+                <li>
+                    <span class="am-u-sm-4 am-u-md-2 timeline-span">2015/10/10</span>
+                    <span class="am-u-sm-8 am-u-md-6"><a href="#">不为无益之事，何以遣有涯之生。</a></span>
+                    <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">灯火阑珊</span>
+                    <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">LWXYFER</span>
+                </li>
+                <li>
+                    <span class="am-u-sm-4 am-u-md-2 timeline-span">2015/10/5</span>
+                    <span class="am-u-sm-8 am-u-md-6"><a href="#">一想到你，我这张丑脸上就泛起微笑</a></span>
+                    <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">凌晨四点钟</span>
+                    <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">二师兄</span>
+                </li>-->
         </div>
-        <hr>
         
-
-        <form class="am-form am-g">
-            <h3 class="blog-comment">评论</h3>
-            <div id="gitalk-container"></div>
-
-        </form>
 
         <hr>
     </div>
 
+
 </div>
 <!-- content end -->
-
 
  <footer class="blog-footer">
     <div class="am-g am-g-fixed blog-fixed am-u-sm-centered blog-footer-padding">
@@ -111,6 +114,8 @@
     <div class="blog-text-center">© 2015 AllMobilize, Inc. Licensed under MIT license. Made with love By LWXYFER</div>    
   </footer>
 
+
+
 <!--[if (gte IE 9)|!(IE)]><!-->
 <script src="assets/js/jquery.min.js"></script>
 <!--<![endif]-->
@@ -120,7 +125,7 @@
 <script src="assets/js/amazeui.ie8polyfill.min.js"></script>
 <![endif]-->
 <script src="assets/js/amazeui.min.js"></script>
-<script src="assets/js/article.js"></script>
 <!-- <script src="assets/js/app.js"></script> -->
+<script src="assets/js/timeline.js"></script>
 </body>
 </html>

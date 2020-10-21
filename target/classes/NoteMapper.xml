@@ -94,6 +94,9 @@
     <select id="selectAll" resultMap="BaseResultMap">
     select * from note
   </select>
+  <select id="selecttimelineAll" resultMap="BaseResultMap">
+    select noteid,title,time,author from note
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from note
     where noteid = #{noteid,jdbcType=INTEGER}

@@ -16,48 +16,6 @@ public class UserServiceImpl implements UserService {
 	private UserMapper usermapper;
 
 	@Override
-	public int countByExample(UserExample example) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int deleteByExample(UserExample example) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int deleteByPrimaryKey(String name) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int insert(User record) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int insertSelective(User record) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public List<User> selectByExampleWithBLOBs(UserExample example) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<User> selectByExample(UserExample example) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public User selectByPrimaryKey(String name) {
 		// TODO Auto-generated method stub
 		return null;
@@ -67,24 +25,6 @@ public class UserServiceImpl implements UserService {
 	public User selectByAandP(User record) {
 		// TODO Auto-generated method stub
 		return usermapper.selectByAandP(record);
-	}
-
-	@Override
-	public int updateByExampleSelective(User record, UserExample example) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int updateByExampleWithBLOBs(User record, UserExample example) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int updateByExample(User record, UserExample example) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Override
@@ -109,6 +49,18 @@ public class UserServiceImpl implements UserService {
 	public List<User> selectAll() {
 		// TODO Auto-generated method stub
 		return usermapper.selectAll();
+	}
+
+	@Override
+	public User selectByA(String account) {
+		// TODO Auto-generated method stub
+		return usermapper.selectByA(account);
+	}
+
+	@Override
+	public int updatePasswordByAccountSelective(User record) {
+		// TODO Auto-generated method stub
+		return usermapper.updatePasswordByAccountSelective(record);
 	}
 
 }

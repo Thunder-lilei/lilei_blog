@@ -1,4 +1,16 @@
 $(document).ready(function() {
+	const gitalk = new Gitalk({
+	  clientID: '',
+	  clientSecret: '',
+	  repo: 'MyBlog_Talk',      // The repository of store comments,
+	  owner: 'Thunder-lilei',
+	  admin: ['Thunder-lilei'],
+	  id: location.pathname,      // Ensure uniqueness and length less than 50
+	  distractionFreeMode: false  // Facebook-like distraction free mode
+	})
+
+	gitalk.render('gitalk-container')
+	
 		let message = GetQueryString('message');
 		if(message!=="success" && message!==null)
 		{alert(message)}
